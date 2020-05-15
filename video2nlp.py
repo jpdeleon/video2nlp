@@ -4,6 +4,8 @@ from matplotlib import rcParams
 rcParams["figure.dpi"] = 150
 rcParams["savefig.dpi"] = 150
 
+import sys
+import argparse
 import matplotlib.pyplot as pl
 import pandas as pd
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -108,16 +110,40 @@ class Base:
 
 
 if __name__ == "__main__":
-    # video_id = "JznCB4yplJw"
-    video_id = "LnC5kiqiKlw"
+    parser = argparse.ArgumentParser(description="check craigslist apartments")
+    parser.add_argument(
+        "-id", "--video_id", type=str, help="youtube video url"
+    )
+    parser.add_argument(
+        "-s", "--stopwords", type=str, nargs="+", help="words to remove"
+    )
+    parser.add_argument(
+        "-e",
+        "--example",
+        action="store_true",
+        default=False,
+        help="run example",
+    )
+    parser.add_argument("-v", "--verbose", action="store_true", default=False)
+    args = parser.parse_args(None if sys.argv[1:] else ["-h"])
 
-    # base class
-    bc = Base(youtube_video_id=video_id)
-    #
+    # video_id = "JznCB4yplJw"
+    if args.example:
+        video_id = "sBYdIPZDYsU"
+        stopwords = ["oh", "like", "thing", "come", "yeah", "ba", "ko"]
+    else:
+        video_id = args.video_id
+        stopwords = args.stopwords
+
+    if args.verbose:
+        print(
+            f"Pulling captions from https://www.youtube.com/watch?v={video_id}"
+        )
+    # init base class
+    bc = Base(youtube_video_id=video_id, verbose=args.verbose)
+    # measure sentiment
     senti = bc.get_sentiment()
     print("Sentiment: ", senti)
-
-    # visualization
-    more_stopwords = ["oh", "like", "thing", "come", "yeah", "ba", "ko"]
-    fig = bc.plot_wordcloud(stopwords=more_stopwords)
+    # visualize wordcloud
+    fig = bc.plot_wordcloud(stopwords=stopwords)
     pl.show()
