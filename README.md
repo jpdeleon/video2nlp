@@ -14,9 +14,24 @@ python -m spacy download en
 ## example
 Fetch the cc from this [youtube video](https://www.youtube.com/watch?v=LnC5kiqiKlw) then estimate sentiment/polarity and create a wordcloud.
 ```bash
-python video2nlp.py
+./video2nlp.py -e -v
+
+Raw word count: 8488
+stopwords removed: 5107
+Sentiment:  Sentiment(polarity=0.21995583825509454, subjectivity=0.5443397329642683)
 ```
 ![img](./wordcloud.png)
+
+## usage
+How about [this speech](https://www.youtube.com/watch?v=sBYdIPZDYsU) by Trump?
+```
+./video2nlp.py -id sBYdIPZDYsU -v
+
+Raw word count: 8488
+stopwords removed: 5107
+Sentiment:  Sentiment(polarity=0.21995583825509454, subjectivity=0.5443397329642683)
+
+```
 
 ## Run at Google colab
 <a href="https://colab.research.google.com/github/jpdeleon/tql/blob/master/notebooks/examples-QL.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
