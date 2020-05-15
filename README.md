@@ -34,4 +34,4 @@ Sentiment:  Sentiment(polarity=0.21995583825509454, subjectivity=0.5443397329642
 ```
 
 ## Run at Google colab
-<a href="https://colab.research.google.com/github/jpdeleon/tql/blob/master/notebooks/examples-QL.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://colab.research.google.com/github/jpdeleon/video2nlp/blob/master/example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
