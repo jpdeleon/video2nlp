@@ -12,6 +12,7 @@ pip install -e .
 python -m spacy download en
 ```
 ## example
+Fetch the cc from this [youtube video](https://www.youtube.com/watch?v=LnC5kiqiKlw) then estimate sentiment/polarity and create a wordcloud.
 ```bash
 python video2nlp.py
 ```
